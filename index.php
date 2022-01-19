@@ -163,7 +163,6 @@ class Computer {
     }
 
     // set get model
-
     public function setModel($model)
     {
 
@@ -177,7 +176,6 @@ class Computer {
     }
 
     // set get price
-
     public function setPrice($price)
     {
 
@@ -191,7 +189,6 @@ class Computer {
     }
 
     // set get brand
-
     public function setBrand($brand)
     {
 
@@ -202,6 +199,18 @@ class Computer {
     {
 
         return $this->brand;
+    }
+
+    // print functions
+    public function printMe() {
+
+        echo $this;
+    }
+
+    public function __toString() {
+        
+        return $this-> getBrand() . " " . $this-> getModel() . ": € " 
+                . $this-> price . " [" . $this-> getUniqCode() . "]";
     }
 }
 ?>
