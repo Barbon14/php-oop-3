@@ -38,7 +38,7 @@ class User {
     public function setUsername($username) {
 
         if (strlen($username)< 3 || strlen($username) > 16)
-            throw new Exception("Lo username deve contenere dai 3 ai 16 caratteri. <br>");
+            throw new Exception("Lo username deve contenere dai 3 ai 16 caratteri.");
 
         $this-> username  = $username;
     }
@@ -53,7 +53,7 @@ class User {
     {
 
         if (ctype_alnum($password))
-            throw new Exception("La password deve contenere almeno un carattere speciale. <br>"); 
+            throw new Exception("La password deve contenere almeno un carattere speciale."); 
 
         $this-> password = $password;
     }
@@ -69,7 +69,7 @@ class User {
     {
 
         if (!is_int($age))
-            throw new Exception("L'età deve esssere un numero. <br>");
+            throw new Exception("L'età deve esssere un numero.");
        
         $this->age  = $age;
     }
@@ -111,7 +111,7 @@ try {
     $u2->printMe();
 
 } catch (Exception $e) {
-    echo "<h3>" . $e->getMessage() . "</h3>";
+    echo "<h3>" . $e->getMessage() . "</h3> <br>";
 }
 
 echo "<br> ------------------------------------------------------------ <br>";
@@ -154,6 +154,9 @@ class Computer {
     // set get unique code
     public function setUniqCode($uniqCode) {
 
+        if (strlen($uniqCode) != 6 || !is_int($uniqCode)) 
+            throw new Exception("Il codice univoco deve essere di 6 cifre.");
+
         $this-> uniqCode = $uniqCode;
     }
 
@@ -165,6 +168,9 @@ class Computer {
     // set get model
     public function setModel($model)
     {
+
+        if (strlen($model) < 3 || strlen($model) > 20)
+            throw new Exception("Il modello deve contenere dai 3 ai 20 caratteri.");
 
         $this->model = $model;
     }
@@ -179,6 +185,9 @@ class Computer {
     public function setPrice($price)
     {
 
+        if (!is_int($price) || $price < 0 || $price > 2000 ) 
+            throw new  Exception("Il prezzo deve essere un valore intero tra 0 e 2000.");
+
         $this->price = $price;
     }
 
@@ -191,6 +200,9 @@ class Computer {
     // set get brand
     public function setBrand($brand)
     {
+
+        if (strlen($brand) < 3 || strlen($brand) > 16)
+            throw new Exception("La marca deve contenere dai 3 ai 20 caratteri.");
 
         $this->brand = $brand;
     }
@@ -213,4 +225,17 @@ class Computer {
                 . $this-> price . " [" . $this-> getUniqCode() . "]";
     }
 }
+
+try {
+
+    $c1 = new Computer(123456, 1500);
+
+    $c1 -> setModel("C15L");
+    $c1 -> setBrand("ASUS");
+
+    $c1 -> printMe();
+
+} catch (Exception $e) {
+    echo "<h3>" . $e->getMessage() . "</h3> <br>";
+} 
 ?>
