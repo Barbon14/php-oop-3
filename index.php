@@ -22,7 +22,6 @@
 //      Testare la classe appena definita con dati corretti e NON corretti all'interno di un
 //      try-catch e eventualmente informare l'utente del problema
 
-
 class User {
 
     private $username;
@@ -115,7 +114,7 @@ try {
     echo "<h3>" . $e->getMessage() . "</h3>";
 }
 
-echo "<br> ------------------------------------------------------------ <br>"
+echo "<br> ------------------------------------------------------------ <br>";
 
 // Definire classe Computer:
 //         ATTRIBUTI:
@@ -137,4 +136,72 @@ echo "<br> ------------------------------------------------------------ <br>"
 //
 //     Testare la classe appena definita con tutte le casistiche interessanti per verificare
 //     il corretto funzionamento dell'algoritmo
+
+class Computer {
+
+    private $uniqCode;
+    private $model;
+    private $price;
+    private $brand;
+
+    // constructor
+    public function __construct($uniqCode, $price) {
+        
+        $this-> setUniqCode($uniqCode);
+        $this-> setPrice($price);
+    }
+    
+    // set get unique code
+    public function setUniqCode($uniqCode) {
+
+        $this-> uniqCode = $uniqCode;
+    }
+
+    public function getUniqCode() {
+
+        return $this-> uniqCode;
+    }
+
+    // set get model
+
+    public function setModel($model)
+    {
+
+        $this->model = $model;
+    }
+
+    public function getModel()
+    {
+
+        return $this->model;
+    }
+
+    // set get price
+
+    public function setPrice($price)
+    {
+
+        $this->price = $price;
+    }
+
+    public function getPrice()
+    {
+
+        return $this->price;
+    }
+
+    // set get brand
+
+    public function setBrand($brand)
+    {
+
+        $this->brand = $brand;
+    }
+
+    public function getBrand()
+    {
+
+        return $this->brand;
+    }
+}
 ?>
